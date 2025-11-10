@@ -1,0 +1,123 @@
+Resumen rápido
+
+Este script define cuatro funciones matemáticas básicas (add, subtract, multiply, divide) que imprimen lo que están haciendo y devuelven el resultado. Luego usa esas funciones para calcular age, height, weight e iq, imprime esos valores y finalmente evalúa una expresión anidada (el “puzzle”) usando las mismas funciones.
+
+Explicación línea por línea / bloque por bloque
+def add(a, b):
+    print(f"ADDING {a} + {b}")
+    return a + b
+
+
+Define la función add que:
+
+imprime con un f-string ADDING <a> + <b> (por ejemplo ADDING 30 + 5)
+
+devuelve la suma a + b.
+
+def subtract(a, b):
+    print(f"SUBTRACTING {a} — {b}")
+    return a - b
+
+
+Define subtract: imprime SUBTRACTING a — b y devuelve a - b. (Nota: usa un guion largo — en el texto impreso; no afecta la operación.)
+
+def multiply(a, b):
+    print(f"MULTIPLYING {a} * {b}")
+    return a * b
+
+
+Define multiply: imprime y devuelve la multiplicación a * b.
+
+def divide(a, b):
+    print(f"DIVIDING {a} / {b}")
+    return a / b
+
+
+Define divide: imprime DIVIDING a / b y devuelve a / b. Importante: usa /, por lo que en Python devuelve un float incluso si ambos operandos son enteros (y podría lanzar ZeroDivisionError si b == 0).
+
+print("Let's do some math with just functions!")
+
+
+Imprime el mensaje inicial.
+
+age = add(30, 5)
+height = subtract(78, 4)
+weight = multiply(90, 2)
+iq = divide(100, 2)
+
+
+Llama a las funciones y asigna los resultados a variables. Cada llamada también mostrará su correspondiente mensaje PRINT definido en la función.
+
+Cálculos y salida impresas en estas llamadas (evaluación y aritmética paso a paso):
+
+age = add(30, 5)
+
+imprime: ADDING 30 + 5
+
+cálculo: 30 + 5 = 35 → age = 35
+
+height = subtract(78, 4)
+
+imprime: SUBTRACTING 78 — 4
+
+cálculo: 78 - 4 = 74 → height = 74
+
+weight = multiply(90, 2)
+
+imprime: MULTIPLYING 90 * 2
+
+cálculo: 90 * 2 = 180 → weight = 180
+
+iq = divide(100, 2)
+
+imprime: DIVIDING 100 / 2
+
+cálculo: 100 / 2 = 50.0 → iq = 50.0 (tipo float)
+
+print(f"Age: {age}, Height: {height}, Weight: {weight}, IQ: {iq}")
+
+
+Imprime los valores calculados: Age: 35, Height: 74, Weight: 180, IQ: 50.0
+
+print("Here is a puzzle.")
+
+
+Mensaje anunciando el puzzle.
+
+what = add(age, subtract(height, multiply(weight, divide(iq, 2))))
+
+
+Expresión anidada — Python evalúa de adentro hacia afuera. Vamos paso a paso, con los valores ya conocidos (age=35, height=74, weight=180, iq=50.0):
+
+divide(iq, 2) → divide(50.0, 2)
+
+imprime: DIVIDING 50.0 / 2
+
+cálculo: 50.0 / 2 = 25.0
+
+multiply(weight, divide_result) → multiply(180, 25.0)
+
+imprime: MULTIPLYING 180 * 25.0
+
+cálculo: 180 * 25.0
+
+180 × 25 = 180 × (20 + 5) = 3600 + 900 = 4500 → 4500.0
+
+subtract(height, multiply_result) → subtract(74, 4500.0)
+
+imprime: SUBTRACTING 74 — 4500.0
+
+cálculo: 74 - 4500.0 = -4426.0
+
+add(age, subtract_result) → add(35, -4426.0)
+
+imprime: ADDING 35 + -4426.0
+
+cálculo: 35 + (-4426.0) = -4391.0
+
+Resultado final: what = -4391.0.
+
+print("That becomes: ", what, "Can you do it by hand?")
+
+
+Imprime: That becomes: -4391.0 Can you do it by hand? (o similar con comas que usa print para separar los items).
